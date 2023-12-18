@@ -3,7 +3,7 @@ const sql = require('mssql')
 const configConnection = {
     server: 'localhost',
     user: 'sa', // update me
-    password: 'localhost123', // update me
+    password: 'DorkoSp123@', // update me
     database: 'pruebaNode',
     options:{
         trustServerCertificate: true // Resuelve un error mpp
