@@ -75,7 +75,7 @@ router.get('/dashboard', async(req,res) => {
         const token = req.headers.authorization.split(' ')[1];
         const result = jwt.verify(token, process.env.SECRET_KEY);
 
-        return res.json({message: 'Dashboard page', user: result, name: result.name})
+        return res.json({message: 'Dashboard page', user: result})
     }catch(e){
         return res.status(401).json({error: e.message})
     }
