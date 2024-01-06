@@ -29,6 +29,7 @@ router.post('/register', async (req,res) => {
 
 //GET ALL USERS
 router.get('/users', async(req,res) => {
+    res.header('Acces-Control-Allow-Origin', '*')
     try{
         const pool = await getConnection()
         const result = await pool.request().query('SELECT * FROM users');
@@ -61,7 +62,7 @@ router.post('/login', async(req,res) => {
             return res.json({message: 'Contrasenha incorrecta'})
         }
 
-        const token = jwt.sign({name: user.name}, process.env.SECRET_KEY, {expiresIn: '1h'} );
+        const token = jwt.sign({name: user.name}, process.env.SECRET_KEY, {expiresIn: '1m'} );
         res.json({message: 'Login my bro :D', result: result.recordset, token: token})
     }catch (e) {
         res.json({e: e.message})
